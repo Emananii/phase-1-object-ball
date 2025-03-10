@@ -224,7 +224,9 @@ function bigShoeRebounds(){
             if (playerStats.shoe > largestShoeSize) {
                 largestShoeSize = playerStats.shoe;/*if player's shoe size is greater,
                                                     save it in this largestShoeSize variable*/
-                playerWithLargestShoe = playerStats;
+                playerWithLargestShoe = playerStats; /*Assign the results of this loop, the
+                                                    stats, into the global variable
+                                                    so that it's accessible outside of it*/
             }
         }
     }
@@ -232,4 +234,26 @@ function bigShoeRebounds(){
 }
 
 console.log(bigShoeRebounds());
+
+function mostPointsScored() {
+    let team = gameObject();
+    let mostPoints = 0;
+    let playerWithMostPoints; // Track the player who scored the most points
+
+    for (let key in team) { 
+        let teamPlayers = team[key].players; // Get the players from the current team
+
+        for (let playerName in teamPlayers) { // Loop through each player
+            let playerStats = teamPlayers[playerName];
+
+            if (playerStats.points > mostPoints) { // Check if current player has most points
+                mostPoints = playerStats.points;
+                playerWithMostPoints = playerName;//saving playerName now because we want the specific name
+            }
+        }
+    }
+    return playerWithMostPoints;
+}
+
+console.log(mostPointsScored());
 
